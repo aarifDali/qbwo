@@ -19,28 +19,29 @@ class StudentController extends Controller
         return view('studentadd');
     }
 
-    public function store(Request $request) {
+    // public function store(Request $request) {
 
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-        ];
+    //     $data = [
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'phone' => $request->phone,
+    //     ];
 
-        $result = DB::table('students')->insert($data);
-        return redirect()->route('student.add');
-    }
+    //     $result = DB::table('students')->insert($data);
+    //     return redirect()->route('student.add');
+    // }
 
 
-    public function edit(Request $request) {
-        $id = $request->id;
+    public function edit($id) {
+
         $student = DB::table('students')->find($id);
 
         return view('studentedit', compact('student'));
     }
+        
 
 
-    public function update(Request $request) {
+    public function store(Request $request) {
         $id = $request->id;
         $data = [
             'name' => $request->name,
@@ -48,8 +49,11 @@ class StudentController extends Controller
             'phone' => $request->phone
         ];
 
-        $result = DB::table('students')->where('id', $id)->update($data);
+        DB::table('students')->updateOrInsert(['id' => $id], $data);
 
         return redirect()->route('student.show');
+
     }
+
 }
+

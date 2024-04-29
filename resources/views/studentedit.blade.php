@@ -8,7 +8,7 @@
 </head>
 <body>
     <div style="text-align:center; padding-top:100px">
-        <form method="post" action="{{ route('student.update', $student->id) }}">
+        <form method="post" action="{{ route('student.store', $student->id) }}">
             @csrf
             <label for="name">Name</label>
             <input type="text" name="name" value="{{$student->name}}"><br><br>

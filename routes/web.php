@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/show', [StudentController::class, 'index'])->name('student.show');
 
 Route::get('/add', [StudentController::class, 'add'])->name('student.add');
-Route::post('/add', [StudentController::class, 'store'])->name('student.store');
+// Route::post('/add', [StudentController::class, 'store'])->name('student.store');
 
 Route::get('/edit/{id?}', [StudentController::class, 'edit'])->name('student.edit');
-Route::post('/add/{id?}', [StudentController::class, 'update'])->name('student.update');
+Route::post('/add/{id?}', [StudentController::class, 'store'])->name('student.store');
